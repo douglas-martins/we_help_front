@@ -1,0 +1,44 @@
+<!--MAIN-->
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <!--SIDE BAR-->
+      <div class="column is-3">
+        <aside class="menu is-hidden-mobile">
+<!--          <p class="menu-label">-->
+<!--            General-->
+<!--          </p>-->
+<!--          <ul class="menu-list">-->
+<!--            <li><a class="is-active">Dashboard</a></li>-->
+<!--            <li><a>Customers</a></li>-->
+<!--            <li><a>Other</a></li>-->
+<!--          </ul>-->
+          <p class="menu-label">
+            Actions
+          </p>
+          <ul class="menu-list">
+            <li>
+              <div *ngFor="let item of menuItems; let i = index">
+                <a><i class="{{item.icon}}"></i> {{item.title}}</a>
+                <ul>
+                  <div *ngFor="let subMenuItem of menuItems[i].items">
+                    <li><a [routerLink]="subMenuItem.link">{{subMenuItem.name}}</a></li>
+                  </div>
+                </ul>
+              </div>
+            </li>
+<!--            <li><a>Invitations</a></li>-->
+<!--            <li><a>Cloud Storage Environment Settings</a></li>-->
+<!--            <li><a>Authentication</a></li>-->
+<!--            <li><a>Payments</a></li>-->
+          </ul>
+        </aside>
+      </div>
+      <!--SIDE BAR-->
+
+    </div>
+  </div>
+</section>
+<!--MAIN-->
+
+
