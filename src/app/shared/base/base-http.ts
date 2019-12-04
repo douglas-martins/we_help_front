@@ -57,6 +57,7 @@ export class BaseHttp extends HttpClient {
    * @return: Observable<T> with the observable for the this request.
    */
   public patch<T>(url: string, body: any, options?: any): Observable<T> {
+    console.log(body);
     if (!this.mock) {
       return super.patch<T>(url, body, options).pipe(map(
         (res: HttpResponse<T>) => {

@@ -5,11 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.sass']
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
-
 }

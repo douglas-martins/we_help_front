@@ -10,13 +10,15 @@ import {FormsModule} from '@angular/forms';
 import {PagesModule} from './pages/pages.module';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     FooterComponent,
-    TopBarComponent
+    TopBarComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,

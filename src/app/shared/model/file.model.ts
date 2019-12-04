@@ -3,7 +3,6 @@ export class FileModel {
     public id?: number,
     public url?: string,
     public createdAt?: Date,
-    public updatedAt?: Date,
     public deletedAt?: Date,
   ) {}
 }

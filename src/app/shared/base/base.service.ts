@@ -6,14 +6,16 @@ import {BaseHttp} from './base-http';
 })
 export class BaseService {
   private mock;
+  protected url: string;
 
   /**
    * Default class constructor.
    * @param http:
    */
   constructor(
-    public http: BaseHttp
+    public http: BaseHttp,
   ) {
+    this.url = 'http://127.0.0.1:5000';
     this.mock = null;
   }
 
@@ -35,10 +37,9 @@ export class BaseService {
   }
 
   /**
-   * Convert a Process to a JSON which can be sent to the server.
+   * Convert a model to a JSON which can be sent to the server.
    */
   protected convert(value: any): any {
-    const copy: any = Object.assign({}, value);
-    return copy;
+    return Object.assign({}, value);
   }
 }

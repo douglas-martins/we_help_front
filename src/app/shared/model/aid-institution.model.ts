@@ -4,6 +4,7 @@ import {FileModel} from './file.model';
 export class AidInstitutionModel {
   constructor(
     public id?: number,
+    public name?: string,
     public contact?: ContactModel,
     public file?: FileModel,
     public urlSite?: string,

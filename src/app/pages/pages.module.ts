@@ -23,6 +23,18 @@ import {WelcomingComponent} from './welcoming/welcoming.component';
 import {WelcomingAvailableComponent} from './welcoming-available/welcoming-available.component';
 import {SharedModule} from '../shared/shared.module';
 import {LayoutModule} from '../layout/layout.module';
+import {AidInstitutionService} from '../shared/service/aid-institution.service';
+import {ChatHistoryService} from '../shared/service/chat-history.service';
+import {ChatHistoryMediaService} from '../shared/service/chat-history-media.service';
+import {ChatRoomService} from '../shared/service/chat-room.service';
+import {ContactService} from '../shared/service/contact.service';
+import {FileService} from '../shared/service/file.service';
+import {PersonService} from '../shared/service/person.service';
+import {UserAnonymousService} from '../shared/service/user-anonymous.service';
+import {WelcomingService} from '../shared/service/welcoming.service';
+import {WelcomingAvailableService} from '../shared/service/welcoming-available.service';
+import {BaseHttp} from '../shared/base/base-http';
+import {RouterModule} from '@angular/router';
 
 
 
@@ -52,7 +64,8 @@ import {LayoutModule} from '../layout/layout.module';
     CommonModule,
     FormsModule,
     SharedModule,
-    LayoutModule
+    LayoutModule,
+    RouterModule
   ],
   exports: [
     AidInstitutionComponent,
@@ -64,9 +77,20 @@ import {LayoutModule} from '../layout/layout.module';
     PersonComponent,
     UserAnonymousComponent,
     WelcomingComponent,
-    WelcomingAvailableComponent
+    WelcomingAvailableComponent,
   ],
   providers: [
+    AidInstitutionService,
+    ChatHistoryService,
+    ChatHistoryMediaService,
+    ChatRoomService,
+    ContactService,
+    FileService,
+    PersonService,
+    UserAnonymousService,
+    WelcomingService,
+    WelcomingAvailableService,
+    BaseHttp
   ]
 })
 export class PagesModule { }

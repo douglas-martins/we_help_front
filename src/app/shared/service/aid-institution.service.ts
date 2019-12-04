@@ -10,8 +10,6 @@ import {AidInstitutionModel} from '../model/aid-institution.model';
 })
 export class AidInstitutionService extends BaseService {
 
-  private url: string;
-
   /**
    * Default class constructor.
    * @param http:
@@ -20,29 +18,28 @@ export class AidInstitutionService extends BaseService {
     public http: BaseHttp
   ) {
     super(http);
-    this.url = 'http://http://127.0.0.1:5000/';
-    this.setMock(new AidInstitutionMock());
+    // this.setMock(new AidInstitutionMock());
   }
 
   create(aidInstitution: AidInstitutionModel): Observable<AidInstitutionModel> {
     const copy = this.convert(aidInstitution);
-    return this.http.post<AidInstitutionModel>(this.url, copy, {observe: 'response'});
+    return this.http.post<AidInstitutionModel>(this.url + '/aid-institution', copy, {observe: 'response'});
   }
 
   update(aidInstitution: AidInstitutionModel): Observable<AidInstitutionModel> {
     const copy = this.convert(aidInstitution);
-    return this.http.patch<AidInstitutionModel>(`${this.url}/${aidInstitution.id}`, copy, {observe: 'response'});
+    return this.http.patch<AidInstitutionModel>(this.url + '/aid-institution/' + aidInstitution.id, copy, {observe: 'response'});
   }
 
   find(id: number): Observable<AidInstitutionModel> {
-    return this.http.get<AidInstitutionModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.get<AidInstitutionModel>(this.url + '/aid-institution/' + id, {observe: 'response'}, id);
   }
 
   findAll(): Observable<AidInstitutionModel[]> {
-    return this.http.getAll<AidInstitutionModel>(this.url, {observe: 'response'});
+    return this.http.getAll<AidInstitutionModel>(this.url + '/aid-institutions', {observe: 'response'});
   }
 
   delete(id: number): Observable<AidInstitutionModel> {
-    return this.http.delete<AidInstitutionModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.delete<AidInstitutionModel>(this.url + '/aid-institution/' + id, {observe: 'response'}, id);
   }
 }

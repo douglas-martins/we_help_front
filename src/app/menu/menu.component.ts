@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BaseMenu} from '../shared/base/base-menu';
 
 @Component({
   selector: 'app-menu',
@@ -6,22 +7,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu.component.sass']
 })
 export class MenuComponent implements OnInit {
-  menuItems: Array<{title: string, icon: string, items: Array<{name: string, description: string, link: string}>}>;
+  menuItems: Array<{title: string, description: string, icon: string, items: Array<{name: string, description: string, link: string}>}>;
   title: string;
 
   constructor() {
-    this.menuItems = new Array<{title: string, icon: string, items: Array<{name: string, description: string, link: string}>}>(
-      this.setFileMenuItem(),
-      this.setContactMenuItem(),
-      this.setUserAnonymousMenuItem(),
-      this.setAidInstitutionMenuItem(),
-      this.setPersonMenuItem(),
-      this.setWelcomingMenuItem(),
-      this.setWelcomingAvailableMenuItem(),
-      this.setChatRoomMenuItem(),
-      this.setChatHistoryMenuItem(),
-      this.setChatHistoryMediaMenuItem()
-    );
+    BaseMenu.MENU_ITEMS =
+      new Array<{title: string, description: string, icon: string, items: Array<{name: string, description: string, link: string}>}>(
+        this.setFileMenuItem(),
+        this.setUserAnonymousMenuItem(),
+        this.setAidInstitutionMenuItem(),
+        this.setPersonMenuItem(),
+        this.setWelcomingMenuItem(),
+        this.setWelcomingAvailableMenuItem(),
+        this.setChatRoomMenuItem(),
+        this.setChatHistoryMenuItem(),
+        this.setChatHistoryMediaMenuItem(),
+        this.setContactMenuItem()
+  );
+    this.menuItems = BaseMenu.MENU_ITEMS;
   }
 
   ngOnInit(): void {
@@ -30,9 +33,11 @@ export class MenuComponent implements OnInit {
   /**
    * Set file menu item object.
    */
-  private setFileMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setFileMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'File',
+      description: ' the files on this system.',
       icon: 'far fa-file',
       items: [
         {
@@ -52,10 +57,12 @@ export class MenuComponent implements OnInit {
    /**
     * Set contact menu item object.
     */
-  private setContactMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setContactMenuItem(): {title: string, description: string, icon: string,
+     items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Contact',
       icon: 'far fa-address-book',
+      description: ' the contacts on this system.',
       items: [
         {
           name: 'Add Contact',
@@ -74,10 +81,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set user anonymous menu item object.
    */
-  private setUserAnonymousMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setUserAnonymousMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return       {
       title: 'User Anonymous',
       icon: 'far fa-user',
+      description: ' the users anonymous on this system.',
       items: [
         {
           name: 'Add User Anonymous',
@@ -96,10 +105,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set aid institution menu item object.
    */
-  private setAidInstitutionMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setAidInstitutionMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Aid Institution',
       icon: 'fas fa-star-of-life',
+      description: ' the aids institutions on this system.',
       items: [
         {
           name: 'Add Aid Institutions',
@@ -118,10 +129,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set person menu item object.
    */
-  private setPersonMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setPersonMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Person',
       icon: 'fas fa-users',
+      description: ' the persons on this system.',
       items: [
         {
           name: 'Add Person',
@@ -140,10 +153,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set welcoming menu item object.
    */
-  private setWelcomingMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setWelcomingMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Welcoming',
       icon: 'fas fa-hands-helping',
+      description: ' the welcomings on this system.',
       items: [
         {
           name: 'Add Welcoming',
@@ -162,10 +177,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set welcoming available menu item object.
    */
-  private setWelcomingAvailableMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setWelcomingAvailableMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Welcoming Available',
       icon: 'fas fa-globe-americas',
+      description: ' the welcomings availables on this system.',
       items: [
         {
           name: 'Add Welcoming Available',
@@ -184,10 +201,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set chat room menu item object.
    */
-  private setChatRoomMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setChatRoomMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Chat Room',
       icon: 'fas fa-comments',
+      description: ' the files chat rooms this system.',
       items: [
         {
           name: 'Add Chat Room',
@@ -206,10 +225,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set chat history menu item object.
    */
-  private setChatHistoryMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setChatHistoryMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Chat History',
       icon: 'fas fa-history',
+      description: ' the chats histories on this system.',
       items: [
         {
           name: 'Add Chat History',
@@ -228,10 +249,12 @@ export class MenuComponent implements OnInit {
   /**
    * Set chat history media menu item object.
    */
-  private setChatHistoryMediaMenuItem(): {title: string, icon: string, items: Array<{name: string, description: string, link: string}>} {
+  private setChatHistoryMediaMenuItem(): {title: string, description: string, icon: string,
+    items: Array<{name: string, description: string, link: string}>} {
     return {
       title: 'Chat History Media',
       icon: 'fas fa-file-image',
+      description: ' the chats histories medias on this system.',
       items: [
         {
           name: 'Add Chat History Media',

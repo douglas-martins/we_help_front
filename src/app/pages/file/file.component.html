@@ -1,54 +1,20 @@
 <app-content>
-  <div class="main-title">Clientes</div>
-  <div class="card-title">Cadastro de Cliente</div>
+  <div class="card-title">{{menuItem.title}}</div>
+  <div class="card-subtitle">{{'Add' + menuItem.description}}</div>
+  <div class="card-icon">{{menuItem.icon}}</div>
   <div class="content">
-    <div class="card-body">
-      <form (ngSubmit)="save()">
-        <div class="row">
-          <div class="col-lg-4 col-xl-4">
-            <label>Url:</label>
-            <input type="text" style="width: 100%;" [(ngModel)]="file.url" name="name">
-          </div>
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>Telefone:</label>-->
-<!--            <input type="tel" style="width: 100%;" [(ngModel)]="client.telephone" name="telephone">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>Logradouro:</label>-->
-<!--            <input type="text" style="width: 100%;" [(ngModel)]="client.street" name="street">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>CEP:</label>-->
-<!--            <input type="text" style="width: 100%;" [(ngModel)]="client.cep" name="cep">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>Cidade:</label>-->
-<!--            <input type="text" style="width: 100%;" [(ngModel)]="client.city" name="city">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>UF:</label>-->
-<!--            <input type="text" style="width: 100%;" [(ngModel)]="client.uf" name="uf">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>Bairro:</label>-->
-<!--            <input type="text" style="width: 100%;" [(ngModel)]="client.neighborhood" name="neighborhood">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>Número:</label>-->
-<!--            <input type="number" style="width: 100%;" [(ngModel)]="client.streetNumber" name="streetNumber">-->
-<!--          </div>-->
-<!--          <div class="col-lg-4 col-xl-4">-->
-<!--            <label>Complemento:</label>-->
-<!--            <input type="text" style="width: 100%;" [(ngModel)]="client.complement" name="complement">-->
-<!--          </div>-->
+    <form (submit)="save()">
+      <div class="field">
+        <label class="label">URL</label>
+        <div class="control">
+          <input class="input" type="text" [(ngModel)]="file.url" [ngModelOptions]="{standalone: true}" placeholder="Ex.:https://test-image.com/image.png">
         </div>
-        <hr>
-        <div class="row">
-          <div class="col-lg-12 col-xl-12">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-          </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Submit</button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </app-content>

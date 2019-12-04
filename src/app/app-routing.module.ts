@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {MenuComponent} from './menu/menu.component';
+import { Routes, RouterModule } from '@angular/router';import {MenuComponent} from './menu/menu.component';
 import {FileComponent} from './pages/file/file.component';
 import {UserAnonymousComponent} from './pages/user-anonymous/user-anonymous.component';
 import {AidInstitutionComponent} from './pages/aid-institution/aid-institution.component';
@@ -21,10 +20,11 @@ import {PersonListComponent} from './pages/person/person-list/person-list.compon
 import {UserAnonymousListComponent} from './pages/user-anonymous/user-anonymous-list/user-anonymous-list.component';
 import {WelcomingListComponent} from './pages/welcoming/welcoming-list/welcoming-list.component';
 import {WelcomingAvailableListComponent} from './pages/welcoming-available/welcoming-available-list/welcoming-available-list.component';
+import {MainComponent} from './main/main.component';
 
 
 const routes: Routes = [
-  {path: '', component: MenuComponent},
+  {path: '', component: MainComponent},
   {path: 'file', component: FileComponent},
   {path: 'file/:id', component: FileComponent},
   {path: 'files', component: FileListComponent},

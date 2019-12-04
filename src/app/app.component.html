@@ -1,14 +1,23 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
-
   <!--TOP BAR-->
   <app-top-bar></app-top-bar>
   <!--TOP BAR-->
 
-  <!--INIT SIDE-BAR-->
-  <app-menu></app-menu>
-
-  <router-outlet></router-outlet>
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-3">
+          <!--INIT SIDE-BAR-->
+          <app-menu></app-menu>
+        </div>
+        <div class="column is-9">
+          <!--CONTENT-->
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!--FOOTER-->
   <app-footer></app-footer>

@@ -1,12 +1,23 @@
 <!--CONTENT-->
-<div class="column is-9">
-  <div class="content is-medium">
-    <h3 class="title is-3">
-      <ng-content select=".card-title"></ng-content>
-    </h3>
-    <div class="box">
-      <ng-content select=".content"></ng-content>
-    </div>
+<div class="content is-fullwidth">
+  <h3 class="title is-3">
+    <ng-content select=".card-title"></ng-content>
+  </h3>
+  <div class="box">
+    <h4 id="const" class="title is-3">
+      <ng-content select=".card-subtitle"></ng-content>
+    </h4>
+    <article class="message is-primary">
+      <!--        <span class="icon has-text-primary">-->
+      <!--          <i>-->
+      <!--            <ng-content select=".card-icon"></ng-content>-->
+      <!--          </i>-->
+      <!--        </span>-->
+      <!--        <div class="message-body">-->
+      <!--          <ng-content select=".card-subtitle"></ng-content>-->
+      <!--        </div>-->
+    </article>
+    <ng-content select=".content"></ng-content>
   </div>
 </div>
 <!--CONTENT-->
