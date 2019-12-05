@@ -9,7 +9,6 @@ import {PersonModel} from '../model/person.model';
   providedIn: 'root'
 })
 export class PersonService extends BaseService {
-  private url: string;
 
   /**
    * Default class constructor.
@@ -19,29 +18,28 @@ export class PersonService extends BaseService {
     public http: BaseHttp
   ) {
     super(http);
-    this.url = 'http://http://127.0.0.1:5000/';
-    this.setMock(new PersonMock());
+    // this.setMock(new PersonMock());
   }
 
   create(person: PersonModel): Observable<PersonModel> {
     const copy = this.convert(person);
-    return this.http.post<PersonModel>(this.url, copy, {observe: 'response'});
+    return this.http.post<PersonModel>(this.url + '/person', copy, {observe: 'response'});
   }
 
   update(person: PersonModel): Observable<PersonModel> {
     const copy = this.convert(person);
-    return this.http.patch<PersonModel>(`${this.url}/${person.id}`, copy, {observe: 'response'});
+    return this.http.patch<PersonModel>(this.url + '/person/' + person.id, copy, {observe: 'response'});
   }
 
   find(id: number): Observable<PersonModel> {
-    return this.http.get<PersonModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.get<PersonModel>(this.url + '/person/' + id, {observe: 'response'}, id);
   }
 
   findAll(): Observable<PersonModel[]> {
-    return this.http.getAll<PersonModel>(this.url, {observe: 'response'});
+    return this.http.getAll<PersonModel>(this.url + '/persons', {observe: 'response'});
   }
 
   delete(id: number): Observable<PersonModel> {
-    return this.http.delete<PersonModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.delete<PersonModel>(this.url + '/person/' + id, {observe: 'response'}, id);
   }
 }

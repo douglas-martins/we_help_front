@@ -9,8 +9,6 @@ import {ChatHistoryMediaModel} from '../model/chat-history-media.model';
   providedIn: 'root'
 })
 export class ChatHistoryMediaService extends BaseService {
-  private url: string;
-
   /**
    * Default class constructor.
    * @param http:
@@ -19,29 +17,28 @@ export class ChatHistoryMediaService extends BaseService {
     public http: BaseHttp
   ) {
     super(http);
-    this.url = 'http://http://127.0.0.1:5000/';
-    this.setMock(new ChatHistoryMediaMock());
+    // this.setMock(new ChatHistoryMediaMock());
   }
 
   create(chatHistoryMedia: ChatHistoryMediaModel): Observable<ChatHistoryMediaModel> {
     const copy = this.convert(chatHistoryMedia);
-    return this.http.post<ChatHistoryMediaModel>(this.url, copy, {observe: 'response'});
+    return this.http.post<ChatHistoryMediaModel>(this.url + '/chat-history-media', copy, {observe: 'response'});
   }
 
   update(chatHistoryMedia: ChatHistoryMediaModel): Observable<ChatHistoryMediaModel> {
     const copy = this.convert(chatHistoryMedia);
-    return this.http.patch<ChatHistoryMediaModel>(`${this.url}/${chatHistoryMedia.id}`, copy, {observe: 'response'});
+    return this.http.patch<ChatHistoryMediaModel>(this.url + '/chat-history-media/' + chatHistoryMedia.id, copy, {observe: 'response'});
   }
 
   find(id: number): Observable<ChatHistoryMediaModel> {
-    return this.http.get<ChatHistoryMediaModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.get<ChatHistoryMediaModel>(this.url + '/chat-history-media/' + id, {observe: 'response'}, id);
   }
 
   findAll(): Observable<ChatHistoryMediaModel[]> {
-    return this.http.getAll<ChatHistoryMediaModel>(this.url, {observe: 'response'});
+    return this.http.getAll<ChatHistoryMediaModel>(this.url + '/chats-history-medias', {observe: 'response'});
   }
 
   delete(id: number): Observable<ChatHistoryMediaModel> {
-    return this.http.delete<ChatHistoryMediaModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.delete<ChatHistoryMediaModel>(this.url + '/chat-history-media/' + id, {observe: 'response'}, id);
   }
 }

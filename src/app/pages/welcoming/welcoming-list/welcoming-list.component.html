@@ -1,1 +1,33 @@
-<p>welcoming-list works!</p>
+<app-content>
+  <div class="card-title">{{menuItem.title}}</div>
+  <div class="card-subtitle">{{'List' + menuItem.description}}</div>
+  <div class="content">
+    <table class="table is-striped is-fullwidth">
+      <thead>
+      <tr>
+        <th *ngFor="let key of keys">{{key}}</th>
+        <th>actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let welcoming of welcomings">
+        <th>{{welcoming.id}}</th>
+        <th>{{welcoming.person.contact.id}}</th>
+        <th>{{welcoming.person.file.id}}</th>
+        <th>{{welcoming.person.createdAt | date}}</th>
+        <th>{{welcoming.person.updatedAt | date}}</th>
+        <th>{{welcoming.person.deletedAt | date}}</th>
+        <th style="text-align: center;">
+          <div class="field is-grouped">
+            <div class="control">
+              <a [routerLink]="['/welcomings', welcoming.id]" href="" class="button is-small is-link">Editar</a>
+              <button (click)="remove(welcoming.id)" class="button is-small is-danger">Remover</button>
+            </div>
+          </div>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</app-content>

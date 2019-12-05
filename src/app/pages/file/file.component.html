@@ -3,11 +3,11 @@
   <div class="card-subtitle">{{'Add' + menuItem.description}}</div>
   <div class="card-icon">{{menuItem.icon}}</div>
   <div class="content">
-    <form (submit)="save()">
+    <form [formGroup]="formGroup" (submit)="save()">
       <div class="field">
         <label class="label">URL</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="file.url" [ngModelOptions]="{standalone: true}" placeholder="Ex.:https://test-image.com/image.png">
+          <input class="input" type="text" [(ngModel)]="file.url" formControlName="url" placeholder="Ex.:https://test-image.com/image.png">
         </div>
       </div>
       <div class="field is-grouped">

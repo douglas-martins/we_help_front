@@ -3,26 +3,47 @@
   <div class="card-subtitle">{{'Add' + menuItem.description}}</div>
   <div class="card-icon">{{menuItem.icon}}</div>
   <div class="content">
-    <form (submit)="save()">
-      contact	file	createdAt	updatedAt	deletedAt	actions
+    <form [formGroup]="formGroup" (submit)="save()">
       <div class="field">
         <label class="label">Name</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="aidInstitution.name" [ngModelOptions]="{standalone: true}" placeholder="Ex.: Cancer Institution">
+          <input class="input" type="text" [(ngModel)]="aidInstitution.name" formControlName="name"
+                 placeholder="Ex.: Cancer Institution">
         </div>
       </div>
 
       <div class="field">
-        <label class="label">URL</label>
+        <label class="label">URL Site</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="aidInstitution.urlSite" [ngModelOptions]="{standalone: true}" placeholder="Ex.:https://institution.com/">
+          <input class="input" type="text" [(ngModel)]="aidInstitution.urlSite" formControlName="urlSite"
+                 placeholder="Ex.:https://institution.com/">
         </div>
       </div>
 
+      <br>
+      <label class="label">Contact</label>
+      <br>
       <div class="field is-grouped">
-        <label class="label">Name</label>
         <div class="control">
-          <input class="input" type="text" [(ngModel)]="aidInstitution.name" [ngModelOptions]="{standalone: true}" placeholder="Ex.: Cancer Institution">
+          <label class="label">Telephone</label>
+          <input class="input" type="text" mask="+00 (00) 000-0000" formControlName="telephone"
+                 [(ngModel)]="aidInstitution.contact.telephone" placeholder="Ex.: +55 (99) 999-9999">
+        </div>
+        <div class="control">
+          <label class="label">E-mail</label>
+          <input class="input" type="text" formControlName="email"
+                 [(ngModel)]="aidInstitution.contact.email" placeholder="Ex.: test@email.com">
+        </div>
+      </div>
+
+      <br>
+      <label class="label">File</label>
+      <br>
+      <div class="field is-grouped">
+        <div class="control">
+          <label class="label">URL</label>
+          <input class="input" type="text" [(ngModel)]="aidInstitution.file.url" formControlName="url"
+                 placeholder="Ex.:https://test-image.com/image.png">
         </div>
       </div>
 

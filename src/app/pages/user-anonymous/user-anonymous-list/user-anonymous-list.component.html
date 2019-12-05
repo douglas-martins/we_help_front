@@ -1,1 +1,32 @@
-<p>user-anonymous-list works!</p>
+<app-content>
+  <div class="card-title">{{menuItem.title}}</div>
+  <div class="card-subtitle">{{'List' + menuItem.description}}</div>
+  <div class="content">
+    <table class="table is-striped is-fullwidth">
+      <thead>
+      <tr>
+        <th *ngFor="let key of keys">{{key}}</th>
+        <th>actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr *ngFor="let userAnonymous of usersAnonymous">
+        <th>{{userAnonymous.id}}</th>
+        <th>{{userAnonymous.name}}</th>
+        <th>{{userAnonymous.createdAt | date}}</th>
+        <th>{{userAnonymous.updatedAt | date}}</th>
+        <th>{{userAnonymous.deletedAt | date}}</th>
+        <th style="text-align: center;">
+          <div class="field is-grouped">
+            <div class="control">
+              <a [routerLink]="['/user-anonymous', userAnonymous.id]" href="" class="button is-small is-link">Editar</a>
+              <button (click)="remove(userAnonymous.id)" class="button is-small is-danger">Remover</button>
+            </div>
+          </div>
+        </th>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</app-content>

@@ -10,7 +10,7 @@ import { PersonListComponent } from './person/person-list/person-list.component'
 import { UserAnonymousListComponent } from './user-anonymous/user-anonymous-list/user-anonymous-list.component';
 import { WelcomingListComponent } from './welcoming/welcoming-list/welcoming-list.component';
 import { WelcomingAvailableListComponent } from './welcoming-available/welcoming-available-list/welcoming-available-list.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AidInstitutionComponent} from './aid-institution/aid-institution.component';
 import {ChatHistoryComponent} from './chat-history/chat-history.component';
 import {ChatHistoryMediaComponent} from './chat-history-media/chat-history-media.component';
@@ -35,7 +35,9 @@ import {WelcomingService} from '../shared/service/welcoming.service';
 import {WelcomingAvailableService} from '../shared/service/welcoming-available.service';
 import {BaseHttp} from '../shared/base/base-http';
 import {RouterModule} from '@angular/router';
-
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
 
 
 @NgModule({
@@ -65,7 +67,11 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     SharedModule,
     LayoutModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgxMaskModule
   ],
   exports: [
     AidInstitutionComponent,

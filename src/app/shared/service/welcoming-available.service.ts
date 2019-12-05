@@ -9,7 +9,6 @@ import {BaseService} from '../base/base.service';
   providedIn: 'root'
 })
 export class WelcomingAvailableService extends BaseService {
-  private url: string;
 
   /**
    * Default class constructor.
@@ -19,29 +18,29 @@ export class WelcomingAvailableService extends BaseService {
     public http: BaseHttp
   ) {
     super(http);
-    this.url = 'http://http://127.0.0.1:5000/';
-    this.setMock(new WelcomingAvailableMock());
+    // this.setMock(new WelcomingAvailableMock());
   }
 
   create(welcomingAvailable: WelcomingAvailableModel): Observable<WelcomingAvailableModel> {
     const copy = this.convert(welcomingAvailable);
-    return this.http.post<WelcomingAvailableModel>(this.url, copy, {observe: 'response'});
+    return this.http.post<WelcomingAvailableModel>(this.url + 'welcoming-available', copy, {observe: 'response'});
   }
 
   update(welcomingAvailable: WelcomingAvailableModel): Observable<WelcomingAvailableModel> {
     const copy = this.convert(welcomingAvailable);
-    return this.http.patch<WelcomingAvailableModel>(`${this.url}/${welcomingAvailable.id}`, copy, {observe: 'response'});
+    return this.http.patch<WelcomingAvailableModel>(this.url + '/welcoming-available/' + welcomingAvailable.id, copy,
+      {observe: 'response'});
   }
 
   find(id: number): Observable<WelcomingAvailableModel> {
-    return this.http.get<WelcomingAvailableModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.get<WelcomingAvailableModel>(this.url + '/welcoming-available/' + id, {observe: 'response'}, id);
   }
 
   findAll(): Observable<WelcomingAvailableModel[]> {
-    return this.http.getAll<WelcomingAvailableModel>(this.url, {observe: 'response'});
+    return this.http.getAll<WelcomingAvailableModel>(this.url + '/welcomings-availables', {observe: 'response'});
   }
 
   delete(id: number): Observable<WelcomingAvailableModel> {
-    return this.http.delete<WelcomingAvailableModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.delete<WelcomingAvailableModel>(this.url + '/welcoming-available/' + id, {observe: 'response'}, id);
   }
 }

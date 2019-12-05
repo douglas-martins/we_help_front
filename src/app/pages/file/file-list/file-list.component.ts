@@ -31,6 +31,7 @@ export class FileListComponent extends MenuItem implements OnInit {
     super(BaseMenuTypes.FILE);
     this.service.findAll().subscribe((data) => {
       this.files = data;
+      console.log(data);
       this.keys = (typeof this.files[0] !== 'undefined' ? Object.keys(this.files[0]) : new Array<string>());
     });
   }

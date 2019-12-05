@@ -9,7 +9,6 @@ import {UserAnonymousModel} from '../model/user-anonymous.model';
   providedIn: 'root'
 })
 export class UserAnonymousService extends BaseService {
-  private url: string;
 
   /**
    * Default class constructor.
@@ -19,29 +18,28 @@ export class UserAnonymousService extends BaseService {
     public http: BaseHttp
   ) {
     super(http);
-    this.url = 'http://http://127.0.0.1:5000/';
-    this.setMock(new UserAnonymousMock());
+    // this.setMock(new UserAnonymousMock());
   }
 
   create(userAnonymous: UserAnonymousModel): Observable<UserAnonymousModel> {
     const copy = this.convert(userAnonymous);
-    return this.http.post<UserAnonymousModel>(this.url, copy, {observe: 'response'});
+    return this.http.post<UserAnonymousModel>(this.url + '/user-anonymous', copy, {observe: 'response'});
   }
 
   update(userAnonymous: UserAnonymousModel): Observable<UserAnonymousModel> {
     const copy = this.convert(userAnonymous);
-    return this.http.patch<UserAnonymousModel>(`${this.url}/${userAnonymous.id}`, copy, {observe: 'response'});
+    return this.http.patch<UserAnonymousModel>(this.url + '/user-anonymous/' + userAnonymous.id, copy, {observe: 'response'});
   }
 
   find(id: number): Observable<UserAnonymousModel> {
-    return this.http.get<UserAnonymousModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.get<UserAnonymousModel>(this.url + '/user-anonymous/' + id, {observe: 'response'}, id);
   }
 
   findAll(): Observable<UserAnonymousModel[]> {
-    return this.http.getAll<UserAnonymousModel>(this.url, {observe: 'response'});
+    return this.http.getAll<UserAnonymousModel>(this.url + '/users-anonymous', {observe: 'response'});
   }
 
   delete(id: number): Observable<UserAnonymousModel> {
-    return this.http.delete<UserAnonymousModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.delete<UserAnonymousModel>(this.url + '/user-anonymous/' + id, {observe: 'response'}, id);
   }
 }

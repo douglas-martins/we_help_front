@@ -11,6 +11,11 @@ import {PagesModule} from './pages/pages.module';
 import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
 import { MainComponent } from './main/main.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {IConfig, NgxMaskModule} from 'ngx-mask';
+
+// export const options: Partial<IConfig> | (() => Partial<IConfig>);
 
 @NgModule({
   declarations: [
@@ -26,9 +31,11 @@ import { MainComponent } from './main/main.component';
     FormsModule,
     SharedModule,
     PagesModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    NgxMaskModule.forRoot()
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

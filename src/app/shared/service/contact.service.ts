@@ -9,7 +9,6 @@ import {ContactModel} from '../model/contact.model';
   providedIn: 'root'
 })
 export class ContactService extends BaseService {
-  private url: string;
 
   /**
    * Default class constructor.
@@ -19,29 +18,28 @@ export class ContactService extends BaseService {
     public http: BaseHttp
   ) {
     super(http);
-    this.url = 'http://http://127.0.0.1:5000/';
-    this.setMock(new ContactMock());
+    // this.setMock(new ContactMock());
   }
 
   create(contact: ContactModel): Observable<ContactModel> {
     const copy = this.convert(contact);
-    return this.http.post<ContactModel>(this.url, copy, {observe: 'response'});
+    return this.http.post<ContactModel>(this.url + '/contact', copy, {observe: 'response'});
   }
 
   update(contact: ContactModel): Observable<ContactModel> {
     const copy = this.convert(contact);
-    return this.http.patch<ContactModel>(`${this.url}/${contact.id}`, copy, {observe: 'response'});
+    return this.http.patch<ContactModel>(this.url + '/contact/' + contact.id, copy, {observe: 'response'});
   }
 
   find(id: number): Observable<ContactModel> {
-    return this.http.get<ContactModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.get<ContactModel>(this.url + '/contact/' + id, {observe: 'response'}, id);
   }
 
   findAll(): Observable<ContactModel[]> {
-    return this.http.getAll<ContactModel>(this.url, {observe: 'response'});
+    return this.http.getAll<ContactModel>(this.url + '/contacts', {observe: 'response'});
   }
 
   delete(id: number): Observable<ContactModel> {
-    return this.http.delete<ContactModel>(`${this.url}/${id}`, {observe: 'response'}, id);
+    return this.http.delete<ContactModel>(this.url + '/contact/' + id, {observe: 'response'}, id);
   }
 }
